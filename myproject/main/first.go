@@ -2,24 +2,40 @@ package main
 
 import (
     "fmt"
-
     "myproject/dirty"
     "myproject/hello"
 )
 
+
+func printFileList(file_lst []string) {
+    fmt.Println("Список файлов:")
+    for _, file := range file_lst {
+        hash, err := dirty.СalculateSHA256(file)
+        if err != nil {
+            fmt.Println("Ошибка при СalculateSHA256:", err)
+            return
+        }
+        fmt.Println(hash, file)
+    }    
+}
+
+
 func main() {
     hello.Hello("World")
-    fmt.Println("!!!!")
-    
-    // Измените вызов функции на Exported version
-    files, err := dirty.ListFiles(".") // Изменено на ListFiles
+
+    dirty.CreateDir("test")
+    err := dirty.CopyFile("go.mod", "test/go.mod")
     if err != nil {
-        fmt.Println("Ошибка при получении списка файлов:", err)
+        fmt.Println("Ошибка при CopyFile:", err)
         return
     }
-    
-    fmt.Println("Список файлов:")
-    for _, file := range files {
-        fmt.Println(file)
+
+    file_lst, err := dirty.ListFiles(".")
+    if err != nil {
+        fmt.Println("Ошибка при ListFiles:", err)
+        return
     }
+    printFileList(file_lst)
+
+
 }
