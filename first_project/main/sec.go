@@ -1,6 +1,6 @@
 package main
 
-import "myproject/hello"
+import "first_project/hello"
    
 
 func main() {

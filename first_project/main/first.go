@@ -2,8 +2,8 @@ package main
 
 import (
     "fmt"
-    "myproject/dirty"
-    "myproject/hello"
+    "first_project/dirty"
+    "first_project/hello"
 )
 
 
