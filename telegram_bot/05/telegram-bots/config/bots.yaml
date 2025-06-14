@@ -1,0 +1,23 @@
+bots:
+  bot_cat:
+    token: ""
+    class: "CatBot"
+    settings:
+      greeting: "Мяу! Привет!"
+      food: "Рыбка"
+
+  bot_dog:
+    token: ""
+    class: "DogBot"
+    settings:
+      greeting: "Гав! Привет!"
+      toy: "Мяч"
+
+  bot_admin:
+    token: ""
+    class: "AdminBot"
+    settings:
+      access_level: "high"
+      allowed_users:
+        - "user1"
+        - "user2"      
